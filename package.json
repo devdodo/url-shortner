@@ -1,0 +1,16 @@
+{
+  "name": "urlshortner",
+  "version": "1.0.0",
+  "description": "Website URL shortner",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frank Ameh",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0",
+    "uuid": "^8.3.0"
+  }
+}

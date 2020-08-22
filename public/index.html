@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Devdodo's URL Shortener</title>
+</head>
+<body>
+    <div class="container">
+        <div class="all-items">
+            <section>
+                <h1>Devdodo's URL Shortener</h1>
+                <p>Enter url to shorten</p>
+            </section>
+            <section class="form-section">
+                <form action="" id="url-form">
+                    <input type="url" placeholder="Enter URL" id="form-input">
+                    <button type="submit">Shorten</button>
+                    <p id="error-message"></p>
+                </form>
+            </section>
+        </div>
+            <section>
+                <hr>
+                <div class="output"></div>
+            </section>
+    </div>
+    <script>
+        const form = document.getElementById('url-form');
+        const formInput = document.getElementById('form-input');
+        const errorMessage = document.getElementById('error-message');
+        const output = document.querySelector('.output');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if(formInput.value === ""){
+                errorMessage.style.display = "block";
+                errorMessage.innerText = "Please enter a valid url";
+            }else{
+                
+                fetch('/process', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ url: formInput.value })
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    const received = data;
+                    let displayData = `
+                        <div>
+                            <p>Old link - ${received.oldurl}</p> / <span>New Url - <a href="/${received.newurl}">${received.newurl}</a></span>
+                        </div>
+                    `;
+
+                    output.innerHTML = displayData;
+                })
+                .catch(err => {
+                    console.log(err);   
+                });
+            }
+        });
+    </script>
+</body>
+</html>

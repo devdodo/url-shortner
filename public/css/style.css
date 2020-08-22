@@ -1,0 +1,47 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.all-items{
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.form-section form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section form input{
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid lightskyblue;
+    border-radius: 5px;
+}
+
+.form-section form button{
+    height: 30px;
+    width: 150px;
+    margin: auto;
+    color: #fff;
+    background-color: brown;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-section form button:hover{
+    background-color: rgb(65, 4, 4);
+}
+
+#error-message{
+    display: none;
+}
